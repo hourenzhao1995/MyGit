@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	<package name="second" extends="struts-default" namespace="/second">
+		<action name="secondJsp" class="com.baizhi.hrz.action.SecondAction" method="secondJsp">
+			<result name="second">/front/main/book_list.jsp</result>
+		</action>
+		
+		
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

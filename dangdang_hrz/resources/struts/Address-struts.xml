@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	<package name="address" extends="struts-default" namespace="/address">
+	
+		<!-- 通过用户id查询地址 -->
+		<action name="queryAddressByUserId" class="com.baizhi.hrz.action.AddressAction" method="queryAddressByUserId">
+			<result name="ok">/front/order/address_form.jsp</result>
+		</action>
+		
+		<!-- 通过Address的id查询地址 -->
+		<action name="queryAddressById" class="com.baizhi.hrz.action.AddressAction" method="queryAddressById">
+			<result name="ok" type="chain">queryAddressByUserId</result>
+		</action>
+		
+		<!-- 添加地址 -->
+		<action name="addAddress" class="com.baizhi.hrz.action.AddressAction" method="addAddress">
+			<result name="ok">/front/order/order_ok.jsp</result>
+		</action>
+		
+		
+		
+		
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

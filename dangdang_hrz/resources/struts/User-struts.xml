@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	<package name="user" extends="struts-default" namespace="/user">
+		<!-- 查询所有 -->
+		<action name="selectAllUsers" class="com.baizhi.hrz.action.UserAction" method="showAll">
+			<result name="success">/back/user/show.jsp</result>
+		</action>
+		
+		<!-- 修改状态 -->
+		<action name="updateUserStatus" class="com.baizhi.hrz.action.UserAction" method="userStatus">
+			<result name="success" type="redirectAction">selectAllUsers</result>
+		</action>
+		
+		
+		
+		
+		<!-- 前台：注册用户信息 -->
+		<action name="adduser" class="com.baizhi.hrz.action.UserAction" method="regist">
+			<result name="ok" type="redirectAction">sendEmail</result>
+			<result name="error">/front/user/register_form.jsp</result>
+		</action>
+		
+		<!-- 向邮箱发送验证码 -->
+		<action name="sendEmail" class="com.baizhi.hrz.action.UserAction" method="sendEmail">
+			<result name="ok">/front/user/verify_form.jsp</result>
+		</action>
+		
+		<!--前台： 用户激活 -->	
+		<action name="active" class="com.baizhi.hrz.action.UserAction" method="active">
+			<result name="ok">/front/user/register_ok.jsp</result>
+		</action>
+		
+		<!-- 用户登录 -->
+		<action name="login" class="com.baizhi.hrz.action.UserAction" method="login">
+			<result name="ok" type="redirectAction">
+				<param name="namespace">/main</param>
+				<param name="actionName">main</param>
+			</result>
+			<result name="error">/front/user/login_form.jsp</result>
+		</action>
+		
+		<!--前台：安全退出  -->
+		<action name="exit" class="com.baizhi.hrz.action.UserAction" method="exit">
+			<result name="exit" type="redirectAction">
+				<param name="namespace">/main</param>
+				<param name="actionName">main</param>
+			</result>
+		</action>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

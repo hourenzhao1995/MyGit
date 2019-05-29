@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+<!-- 读取小配置文件的信息 -->
+	<properties resource="com/baizhi/hrz/conf/jdbc.properties"/>
+	
+	<!-- 别名设置  为实体类的权限定名起个别名 简化开发 -->
+	<typeAliases>
+		<package name="com.baizhi.hrz.entity"/>
+	</typeAliases>
+	
+	<!-- 数据库的运行参数 -->
+	<!-- 环境配置   -->
+	<environments default="Oracle">
+		<!-- Oracle数据库的运行环境   id:起个名字 随意-->
+		<environment id="Oracle">
+			<!-- 控制事务的方式 JDBC代表使用原生JDBC事务控制   JTA：分布式事务控制 -->
+			<transactionManager type="JDBC"></transactionManager>
+			<!-- 连接池的配置 使用的是框架默认的连接池    第三方连接池产品c3p0   dbcp  -->
+			<dataSource type="POOLED">
+				<!-- 连接Oracle数据库的运行参数 -->
+				<property name="driver" value="${driver}"/>
+				<property name="url" value="${url}"/>
+				<property name="username" value="${username}"/>
+				<property name="password" value="${password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	
+	
+	<!-- 注册声明mapper文件 -->
+	<mappers>
+		<!-- resource:mapper文件的路径 -->
+		 <mapper resource="mapper/AdminMapper.xml"/>
+		 <mapper resource="mapper/CategoryMapper.xml"/>
+		 <mapper resource="mapper/BookMapper.xml"/>
+		 <mapper resource="mapper/OrderMapper.xml"/>
+		 <mapper resource="mapper/UserMapper.xml"/>
+		 <mapper resource="mapper/ItemMapper.xml"/>
+		 <mapper resource="mapper/AddressMapper.xml"/>
+	</mappers>
+</configuration>

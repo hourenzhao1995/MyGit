@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.hrz.dao.OrderDAO">
+
+	<!-- 后台:查询所有的订单 -->
+	<resultMap type="Order" id="all">
+		<id column="oid" property="id"/>
+		<result column="oorderNo" property="order_no"/>
+		<result column="ouserId" property="user_id"/>
+		<result column="ototal" property="total"/>
+		<result column="ocreateDate" property="create_date"/>
+		<result column="oaddressId" property="address_id"/>
+		<association property="address" javaType="Address">
+			<id column="aid" property="id"/>
+			<result column="aname" property="name"/>
+			<result column="alocal" property="local"/>
+			<result column="azipCode" property="zip_code"/>
+			<result column="aphone" property="phone"/>
+			<result column="auser_id" property="user_id"/>
+		</association>
+		
+	</resultMap>
+	
+	<!-- 查询所有订单sql语句 -->
+	<select id="selectAll" resultMap="all">
+		select 
+			o.id as oid,
+			o.order_no as oorderNo,
+			o.user_id as ouserId,
+			o.total as ototal,
+			o.create_date as ocreateDate,
+			o.address_id as oaddressId,
+				a.id as aid,
+				a.name as aname,
+				a.local as alocal,
+				a.zip_code as azipCode,
+				a.phone as aphone,
+				a.user_id as auserId
+		from orders o left join address a on o.address_id = a.id 
+	
+	</select>
+	
+	
+	<!-- 查询订单详细信息 -->
+	
+	<resultMap type="Order" id="aa">
+		<id column="oorderNo" property="order_no"/>
+		<result column="ototal" property="total"/>
+		<collection property="items" ofType="Item" javaType="list">
+			<id column="iid" property="id"/>
+			<result column="icount" property="count"/>
+			<association property="book" javaType="Book">
+				<id column="bid" property="id"/>
+				<result column="bname" property="name"/>
+				<result column="bprice" property="price"/>
+				<result column="bdprice" property="dprice"/>
+				<result column="bcover" property="cover"/>
+			</association>
+		</collection>
+	</resultMap>
+	
+	<!-- 三表链接查询 -->
+	<select id="selectByOreder_no" parameterType="String" resultMap="aa">
+	select
+	o.order_no as oorderNo,
+	o.total as ototal,
+	i.id as iid,
+	i.count as icount,
+	b.id as bid,
+	b.name as bname,
+	b.price as bprice,
+	b.dprice as bdprice,
+	b.cover as bcover
+	from (orders o left join item i on o.id=i.order_id)
+	left join book b on i.book_id=b.id
+	where o.order_no=#{order_no}
+	</select>
+	
+	<insert id="addOrder" parameterType="Order">
+		insert into orders values(#{id},#{order_no},#{user_id},#{total},#{create_date},#{address_id})
+	</insert>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

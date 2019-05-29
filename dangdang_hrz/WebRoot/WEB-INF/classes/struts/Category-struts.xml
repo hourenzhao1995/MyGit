@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	<package name="category" extends="struts-default" namespace="/category">
+		<action name="showAll" class="com.baizhi.hrz.action.CategoryAction" method="showAll">
+			<result name="showAllYes" >/back/category/show.jsp</result>
+		</action>
+		<action name="addfirst" class="com.baizhi.hrz.action.CategoryAction" method="addfirst">
+			<result name="success" type="redirectAction">showAll</result>
+		</action>
+		<action name="queryAllFirst" class="com.baizhi.hrz.action.CategoryAction" method="queryAllFirst">
+			<result name="success" >/back/category/add-second.jsp</result>
+		</action>	
+		
+		<action name="delete" class="com.baizhi.hrz.action.CategoryAction" method="delete">
+			<result name="success" type="redirectAction">showAll</result>
+		</action>
+		
+		
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

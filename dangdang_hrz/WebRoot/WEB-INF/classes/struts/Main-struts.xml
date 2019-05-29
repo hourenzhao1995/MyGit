@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	<package name="mainJSP" extends="struts-default" namespace="/main">
+		<!--main.jsp页面显示  -->
+		<action name="main" class="com.baizhi.hrz.action.MainAction" method="mainJSP">
+			<result name="main">/front/main/main.jsp</result>
+		</action>
+		
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

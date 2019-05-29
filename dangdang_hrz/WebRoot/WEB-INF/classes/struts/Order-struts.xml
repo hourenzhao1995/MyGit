@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	<package name="order" extends="struts-default" namespace="/order">
+		
+		<!-- 查询所有订单Action -->
+		<action name="selectAll" class="com.baizhi.hrz.action.OrderAction" method="show">
+			<result name="success">/back/order/show.jsp</result>
+		</action>
+		
+		<action name="selectOrderDetail" class="com.baizhi.hrz.action.OrderAction" method="selectItem">
+			<result name="success">/back/order/detail.jsp</result>
+		</action>
+		
+		
+		
+		
+		
+		
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

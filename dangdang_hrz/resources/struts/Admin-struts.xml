@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	<package name="admin" extends="struts-default" namespace="/admin">
+		<!-- 管理员登录Action -->
+		<action name="loginAction" class="com.baizhi.hrz.action.AdminAction" method="login">
+			<result name="ok" type="redirect">/back/main/main.jsp</result>
+			<result name="error">/back/login.jsp</result>
+		</action>
+		
+		<!-- 验证码Action -->
+		<action name="execute" class="com.baizhi.hrz.util.ValidationCodeAction" method="execute"></action>
+		
+		<!-- 安全退出Action -->
+		<action name="exitAction" class="com.baizhi.hrz.action.AdminAction" method="Exit">
+			<result name="exit" type="redirect">/back/login.jsp</result>
+		</action>
+	
+	</package>
+</struts>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+	<package name="book" extends="struts-default" namespace="/book">
+		
+		<action name="queryAllBook" class="com.baizhi.hrz.action.BookAction" method="queryAllBook">
+			<result name="success">/back/book/show.jsp</result>
+		</action>
+		
+		<action name="querySeconds" class="com.baizhi.hrz.action.BookAction" method="querySeconds">
+			<result name="success">/back/book/add.jsp</result>
+		</action>
+		<action name="addBook" class="com.baizhi.hrz.action.BookAction" method="addBook">
+			<result name="success" type="redirectAction">queryAllBook</result>
+		</action>
+		<action name="queryBookByKey" class="com.baizhi.hrz.action.BookAction" method="queryBookByKey">
+			<result name="success">/back/book/show.jsp</result>
+		</action>
+		<action name="removeBookById" class="com.baizhi.hrz.action.BookAction" method="removeBookById">
+			<result name="success" type="redirectAction">queryAllBook</result>
+		</action>
+		
+		<!-- 通过id查询一条图书信息 -->
+		<action name="queryBookById" class="com.baizhi.hrz.action.BookAction" method="queryBookById">
+			<result name="success" >/back/book/update.jsp</result>
+		</action>
+		
+		<!-- 修改 -->
+		<action name="updateBook" class="com.baizhi.hrz.action.BookAction" method="updateBook">
+			<result name="success" type="redirectAction">queryAllBook</result>
+		</action>
+		
+		<!-- 前台：展示所有的一级页面  main.jsp -->
+		<action name="mainPage" class="com.baizhi.hrz.action.BookAction" method="mainPage">
+			<result name="success">/front/main/main.jsp</result>
+		</action>
+		
+		<!-- 点击图片或者书名跳转到查询书籍详细信息页面 -->
+		<action name="selectOne" class="com.baizhi.hrz.action.BookAction" method="Bookdetail">
+			<result name="success">/front/main/book_detail.jsp</result>
+		</action>
+		
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
